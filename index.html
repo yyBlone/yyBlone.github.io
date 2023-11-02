@@ -298,7 +298,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2023-11-02 15:10:21 / 修改时间：15:12:45" itemprop="dateCreated datePublished" datetime="2023-11-02T15:10:21+08:00">2023-11-02</time>
+              <time title="创建时间：2023-11-02 15:10:21 / 修改时间：23:42:03" itemprop="dateCreated datePublished" datetime="2023-11-02T15:10:21+08:00">2023-11-02</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -322,7 +322,19 @@
 
       
           <p> github：<a target="_blank" rel="noopener" href="https://github.com/bigcode-project/starcoder">bigcode-project&#x2F;starcoder: Home of StarCoder: fine-tuning &amp; inference! (github.com)</a></p>
-<h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><h1 id="论文阅读"><a href="#论文阅读" class="headerlink" title="论文阅读"></a>论文阅读</h1><h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>starcoder参数量为15.5B</p>
+<h1 id="课程笔记"><a href="#课程笔记" class="headerlink" title="课程笔记"></a>课程笔记</h1><p>来源 <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV12h4y1N7C8/?spm_id_from=333.788.recommend_more_video.0&vd_source=16f489859798ba68cb5c21c1429d48ae">Llama 2 模型结构解析_哔哩哔哩_bilibili</a></p>
+<h2 id="大模型"><a href="#大模型" class="headerlink" title="大模型"></a>大模型</h2><h3 id="提示阶段"><a href="#提示阶段" class="headerlink" title="提示阶段"></a>提示阶段</h3><p>将输入文字<strong>序列化</strong>，变成单词或者数字</p>
+<p>然后查找语料库，对于每个单词都有一个index</p>
+<p>从而将原始的文本信息转换为了数字信息(token序列)</p>
+<p>对token序列进行<strong>embedding</strong>获得实数向量</p>
+<p>后面再加入<strong>位置编码</strong></p>
+<p>作用：确定语境，同时为生成阶段创造第一个token序列</p>
+<h3 id="生成阶段"><a href="#生成阶段" class="headerlink" title="生成阶段"></a>生成阶段</h3><p>生成任务只用到了transformer的decoder，即decoder-only</p>
+<p>gpt和llama都是这样，自回归的生成</p>
+<p>作用：单个token生成单个token，输出又作为输入</p>
+<h3 id="Llama2"><a href="#Llama2" class="headerlink" title="Llama2"></a>Llama2</h3><p><img src="D:\blog\source_posts\img\image-20231102224210870.png" alt="image-20231102224210870"></p>
+<p>0:31:35</p>
+<h1 id="论文精读"><a href="#论文精读" class="headerlink" title="论文精读"></a>论文精读</h1><h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>starcoder参数量为15.5B</p>
 <h1 id="模型实践"><a href="#模型实践" class="headerlink" title="模型实践"></a>模型实践</h1>
       
     </div>
@@ -528,7 +540,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-11-02 16:59:12" itemprop="dateModified" datetime="2023-11-02T16:59:12+08:00">2023-11-02</time>
+                <time title="修改时间：2023-11-02 20:37:38" itemprop="dateModified" datetime="2023-11-02T20:37:38+08:00">2023-11-02</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
