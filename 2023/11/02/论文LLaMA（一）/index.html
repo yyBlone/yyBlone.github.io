@@ -21,15 +21,21 @@
     var CONFIG = {"hostname":"yyblone.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp","menu_item":"fadeInDown"}}};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="yyBlone&#39;s blog">
-<meta property="og:url" content="https://yyblone.github.io/tags/PS3/index.html">
+  <meta name="description" content="github：bigcode-project&#x2F;starcoder: Home of StarCoder: fine-tuning &amp; inference! (github.com) 写在前面论文阅读摘要starcoder参数量为15.5B 模型实践">
+<meta property="og:type" content="article">
+<meta property="og:title" content="StarCoder论文阅读（一）">
+<meta property="og:url" content="https://yyblone.github.io/2023/11/02/%E8%AE%BA%E6%96%87LLaMA%EF%BC%88%E4%B8%80%EF%BC%89/index.html">
 <meta property="og:site_name" content="yyBlone&#39;s blog">
+<meta property="og:description" content="github：bigcode-project&#x2F;starcoder: Home of StarCoder: fine-tuning &amp; inference! (github.com) 写在前面论文阅读摘要starcoder参数量为15.5B 模型实践">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-11-02T07:10:21.775Z">
+<meta property="article:modified_time" content="2023-11-02T07:12:45.761Z">
 <meta property="article:author" content="yyb">
+<meta property="article:tag" content="大模型">
+<meta property="article:tag" content="代码生成">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://yyblone.github.io/tags/PS3/">
+<link rel="canonical" href="https://yyblone.github.io/2023/11/02/%E8%AE%BA%E6%96%87LLaMA%EF%BC%88%E4%B8%80%EF%BC%89/">
 
 
 <script id="page-configurations">
@@ -37,12 +43,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>标签: PS3 | yyBlone's blog</title>
+  <title>StarCoder论文阅读（一） | yyBlone's blog</title>
   
 
 
@@ -192,51 +198,137 @@
         <div class="content-wrap">
           
 
-          <div class="content tag">
+          <div class="content post posts-expand">
             
 
+    
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h2 class="collection-header">PS3
-          <small>标签</small>
-        </h2>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://yyblone.github.io/2023/11/02/%E8%AE%BA%E6%96%87LLaMA%EF%BC%88%E4%B8%80%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="yyb">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yyBlone's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          StarCoder论文阅读（一）
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-11-02 15:10:21 / 修改时间：15:12:45" itemprop="dateCreated datePublished" datetime="2023-11-02T15:10:21+08:00">2023-11-02</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%A7%91%E7%A0%94/" itemprop="url" rel="index"><span itemprop="name">科研</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2013</span>
+        <p> github：<a target="_blank" rel="noopener" href="https://github.com/bigcode-project/starcoder">bigcode-project&#x2F;starcoder: Home of StarCoder: fine-tuning &amp; inference! (github.com)</a></p>
+<h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><h1 id="论文阅读"><a href="#论文阅读" class="headerlink" title="论文阅读"></a>论文阅读</h1><h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>starcoder参数量为15.5B</p>
+<h1 id="模型实践"><a href="#模型实践" class="headerlink" title="模型实践"></a>模型实践</h1>
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+    
+    
+    
+        
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2013-07-13T20:46:25+08:00"
-              content="2013-07-13">
-          07-13
-        </time>
-      </div>
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>yyb
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://yyblone.github.io/2023/11/02/%E8%AE%BA%E6%96%87LLaMA%EF%BC%88%E4%B8%80%EF%BC%89/" title="StarCoder论文阅读（一）">https://yyblone.github.io/2023/11/02/论文LLaMA（一）/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2013/07/13/%E6%A0%BC%E5%BC%8F%E6%A8%A1%E6%9D%BF/" itemprop="url">
-            <span itemprop="name">Hello World</span>
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="https://t.me/tim_run">
+            <span class="icon">
+              <i class="fab fa-telegram"></i>
+            </span>
+
+            <span class="label">Telegram</span>
           </a>
-      </div>
+        </div>
 
-    </header>
-  </article>
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
 
+            <span class="label">RSS</span>
+          </a>
+        </div>
     </div>
   </div>
-  
-  
-  
 
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/" rel="tag"># 大模型</a>
+              <a href="/tags/%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90/" rel="tag"># 代码生成</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/11/01/%E8%AE%BA%E6%96%87StarCoder%EF%BC%88%E4%B8%80%EF%BC%89/" rel="prev" title="StarCoder论文阅读（一）">
+      <i class="fa fa-chevron-left"></i> StarCoder论文阅读（一）
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
   
 
 
@@ -289,6 +381,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%86%99%E5%9C%A8%E5%89%8D%E9%9D%A2"><span class="nav-text">写在前面</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB"><span class="nav-text">论文阅读</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%91%98%E8%A6%81"><span class="nav-text">摘要</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E5%AE%9E%E8%B7%B5"><span class="nav-text">模型实践</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
